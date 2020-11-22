@@ -5,9 +5,12 @@ import com.wzs.spring.cloud.entities.Payment;
 import com.wzs.spring.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author wangzhs
@@ -21,8 +24,14 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     @Value("${server.port}")
     private String serverPort;
+
+    @Value("${spring.application.name}")
+    private String applicationName;
 
     @PostMapping("/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -36,6 +45,15 @@ public class PaymentController {
         Payment payment = paymentService.getPaymentById(id);
         log.info("=====查询结果:{}===端口是: {}", payment, serverPort);
         return null != payment ? CommonResult.success(payment) : CommonResult.error("error");
+    }
+
+    @GetMapping("/get/discovery")
+    public Object getDiscovery() {
+        // 获得服务清单列表
+        List<String> services = discoveryClient.getServices();
+
+        List<ServiceInstance> instances = discoveryClient.getInstances(applicationName);
+        return this.discoveryClient;
     }
 
 }

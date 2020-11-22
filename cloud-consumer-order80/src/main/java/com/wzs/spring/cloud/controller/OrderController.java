@@ -31,4 +31,10 @@ public class OrderController {
         return restTemplate.getForObject(String.format("%s/payment/get/%s", PAYMENT_URL, id), CommonResult.class);
     }
 
+    @GetMapping("/get/discovery")
+    public Object getDiscovery() {
+        // 获得服务清单列表
+        return restTemplate.getForObject(String.format("%s/payment/get/discovery", PAYMENT_URL), Object.class);
+    }
+
 }
