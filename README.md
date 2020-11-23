@@ -55,3 +55,4 @@ ribbon 是从eureka注册中心服务器端上获取服务注册中心，缓存�
 # 问题
 1. 为什么ribbon的rule不能跟springboot启动类放在同一个目录下
 2. CAS 自旋锁
+3. openfeign注解的实现
