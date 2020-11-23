@@ -1,19 +1,41 @@
 package com.wzs.myrule;
 
-import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.WeightedResponseTimeRule;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.netflix.client.config.IClientConfig;
+import com.netflix.loadbalancer.AbstractLoadBalancerRule;
+import com.netflix.loadbalancer.Server;
+
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author wangzhs
  * @since 23/11/2020
  */
-@Configuration
-public class MySelfRule {
+public class MySelfRule extends AbstractLoadBalancerRule {
 
-    @Bean
-    public IRule myRule() {
-        return new WeightedResponseTimeRule();
+    private AtomicInteger atomicInteger = new AtomicInteger(0);
+
+    private Integer next = 0;
+
+    @Override
+    public void initWithNiwsConfig(IClientConfig iClientConfig) {
+
+    }
+
+    @Override
+    public Server choose(Object key) {
+        return choose(this.getLoadBalancer().getAllServers(), key);
+    }
+
+    private Server choose(List<Server> servers, Object key) {
+        int current, next;
+
+        do {
+            // 轮询
+            current = atomicInteger.get();
+            next = current + 1;
+        } while (!atomicInteger.compareAndSet(current, next)); // 修改成功返回true，不对继续循环
+
+        return servers.get(next / servers.size());
     }
 }
