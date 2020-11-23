@@ -24,3 +24,9 @@ ribbon:
   ReadTimeout: 5000
   # 建立连接后从服务器读取到可用资源的时间 单位毫秒
   ConnectTimeOut: 5000
+
+# 日志监控
+logging:
+  level:
+    # feign 日志以什么级别监控哪个接口
+    wzs.spring.cloud.service.PaymentService: debug
