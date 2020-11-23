@@ -3,13 +3,16 @@
 
 
 ## 学习技术的架包和软件版本选择
-cloud           Hoxton.SR1
-boot            2.2.2RELEASE
-cloud alibab    2.1.0RELEASE
-java            8 
-Maven           3.5及以上
-Mysql           5.7及以上
-
+|软件|版本|
+|:---:|:---:|
+|cloud |          Hoxton.SR1|
+|boot   |         2.2.2RELEASE|
+|cloud alibab |   2.1.0RELEASE|
+|java   |         8 |
+|Maven  |         3.5及以上|
+|Mysql   |        5.7及以上|
+|Zookeeper   |    |
+|Consul||
 
 ## Eureka 集群搭建需要更改本地hosts文件
 
@@ -21,7 +24,7 @@ Mysql           5.7及以上
 
 
 ## Eureka、Zookeeper、Consul区别
-|组件名|语言|CAP|服务健康检查|对外暴露接口|是否集成spring cloud|
+|组件名|语言|CAP|服务健康检********查|对外暴露接口|是否集成spring cloud|
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |Eureka|Java|AP|可配置支持|HTTP|是|
 |Consul|go|CP|支持|HTTP/DNS|是|
