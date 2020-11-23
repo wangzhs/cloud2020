@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import wzs.spring.cloud.service.PaymentService;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wangzhs
@@ -25,4 +26,9 @@ public class OrderController {
         return paymentService.getPaymentById(id);
     }
 
+    @GetMapping("/openfeign/timeout")
+    public String paymentTimeOut() throws InterruptedException {
+        // 测试超时
+        return paymentService.paymentTimeOut();
+    }
 }

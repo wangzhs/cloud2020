@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wangzhs
@@ -38,4 +39,9 @@ public class PaymentController {
         return null != payment ? CommonResult.success(payment, serverPort) : CommonResult.error("error");
     }
 
+    @GetMapping("/openfeign/timeout")
+    public String paymentTimeOut() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        return "";
+    }
 }
