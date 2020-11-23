@@ -37,4 +37,9 @@ public class OrderController {
         return restTemplate.getForObject(String.format("%s/payment/get/discovery", PAYMENT_URL), Object.class);
     }
 
+    @GetMapping("/get/entity/{id}")
+    public Object getEntityPaymentById(@PathVariable("id") Long id) {
+        return restTemplate.getForEntity(String.format("%s/payment/get/%s", PAYMENT_URL, id), Object.class);
+    }
+
 }
