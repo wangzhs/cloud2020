@@ -30,6 +30,10 @@ public class CommonResult<T> implements Serializable {
         return new CommonResult(200, "success", data);
     }
 
+    public static <T> CommonResult success(T data, String message) {
+        return new CommonResult(200, message, data);
+    }
+
     public static CommonResult error(String message) {
         return new CommonResult(500, message);
     }

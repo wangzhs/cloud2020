@@ -44,7 +44,7 @@ public class PaymentController {
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         log.info("=====查询结果:{}===端口是: {}", payment, serverPort);
-        return null != payment ? CommonResult.success(payment) : CommonResult.error("error");
+        return null != payment ? CommonResult.success(payment, serverPort) : CommonResult.error("error");
     }
 
     @GetMapping("/get/discovery")
