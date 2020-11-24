@@ -1,5 +1,7 @@
 package com.wzs.spring.cloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.wzs.spring.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,15 +39,24 @@ public class PaymentController {
 
     @GetMapping("/hystrix/ok")
     public String paymentHystrixOk() throws InterruptedException {
-        return Thread.currentThread().getName();
+        return Thread.currentThread().getName() + "ok";
     }
 
+    /**
+     * fallbackMethod 指定当前方法异常了调用什么方法
+     * HystrixProperty 服务超时时间，单位毫秒
+     * @return
+     * @throws InterruptedException
+     */
     @GetMapping("/hystrix/timeout")
+    @HystrixCommand(fallbackMethod = "paymentHystrixOk",commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+    })
     public String paymentHystrixTimeOut() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(5);
         integer.incrementAndGet();
         log.info("请求第{}次", integer.get());
-        return Thread.currentThread().getName();
+        return Thread.currentThread().getName() + "timeout";
     }
 
 }
