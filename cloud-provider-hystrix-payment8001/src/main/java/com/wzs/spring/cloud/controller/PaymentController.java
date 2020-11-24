@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,6 +58,27 @@ public class PaymentController {
         integer.incrementAndGet();
         log.info("请求第{}次", integer.get());
         return Thread.currentThread().getName() + "timeout";
+    }
+
+//    以下是熔断处理
+
+    @HystrixCommand(fallbackMethod = "paymentCircuitBreakerHandle", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"), // 是否开启熔断器
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"), // 接口请求次数
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), // 接口在某个时间范围
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60") // 接口错误率
+    })
+    @GetMapping("/circuit/breaker/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
+        if (id < 0) {
+            throw new RuntimeException("错了");
+        }
+        return Thread.currentThread().getName();
+    }
+
+    // fix:fallbackMethod的方法必须和 paymentCircuitBreaker方法参数一致
+    public String paymentCircuitBreakerHandle(Integer id) {
+        return Thread.currentThread().getName() + "error";
     }
 
 }
