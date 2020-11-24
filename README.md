@@ -1,6 +1,20 @@
 # cloud2020
 尚硅谷2020SpringCloud的教程学习记录
 
+## 服务列表
+|服务ID|服务名称|端口号|服务解释|关联服务|
+|:---:|:---:|:---:|:---:|:---:|
+|1|cloud-consumer-order80|80|客户端消费|2，3|
+|2|cloud-eureka-service7001|7001|Eureka注册网关集群|3|
+|3|cloud-eureka-service7002|7002|Eureka注册网关集群|2|
+|4|cloud-provider-payment8001|8001|支付服务端集群|2，3|
+|5|cloud-provider-payment8002|8002|支付服务端集群|2，3|
+|6|cloud-consumerzk-order80|80|Zookeeper注册中心，客户端消费|7|
+|7|cloud-provider-zookeeper-payment8004|8004|Zookeeper注册中心，服务端|6|
+|8|cloud-consumerconsul-order80|80|Consul注册中心，客户端消费|9|
+|9|cloud-provider-consul-payment8006|8006|Zookeeper注册中心，服务端|9|
+|10|cloud-consumer-openfeign-order80|80|Eureka注册中心，客户端 ，提供openfeign注解式调用|2，3，4，5|
+
 
 ## 学习技术的架包和软件版本选择
 |软件|版本|
