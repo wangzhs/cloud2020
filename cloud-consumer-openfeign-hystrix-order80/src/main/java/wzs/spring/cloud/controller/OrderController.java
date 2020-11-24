@@ -1,5 +1,6 @@
 package wzs.spring.cloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("order")
+@DefaultProperties(defaultFallback = "paymentHystrixTimeOutHandle", commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "8000")
+})
 public class OrderController {
 
     @Resource
@@ -26,9 +30,7 @@ public class OrderController {
     }
 
     @GetMapping("/hystrix/timeout")
-    @HystrixCommand(fallbackMethod = "paymentHystrixTimeOutHandle", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
-    })
+    @HystrixCommand
     public String paymentHystrixTimeOut() throws InterruptedException {
         // 测试超时
         return paymentService.paymentHystrixTimeOut();

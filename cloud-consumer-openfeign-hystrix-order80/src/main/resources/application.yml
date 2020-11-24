@@ -18,12 +18,12 @@ eureka:
       #设置与Eureka Service交互的地址 向那个服务注册
       defaultZone: http://eureka7001.com:7001/eureka
 
-## 设置openfeign客户端超出时间
-#ribbon:
-#  # 建立连接所用的时间，适用于网络正常的情况下，两端连接的时间 单位毫秒
-#  ReadTimeout: 5000
-#  # 建立连接后从服务器读取到可用资源的时间 单位毫秒
-#  ConnectTimeOut: 5000
+# 设置openfeign客户端超出时间
+ribbon:
+  # 建立连接所用的时间，适用于网络正常的情况下，两端连接的时间 单位毫秒
+  ReadTimeout: 5000
+  # 建立连接后从服务器读取到可用资源的时间 单位毫秒
+  ConnectTimeOut: 5000
 
 # 日志监控
 logging:
