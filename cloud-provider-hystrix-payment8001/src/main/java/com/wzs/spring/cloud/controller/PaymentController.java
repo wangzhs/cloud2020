@@ -53,7 +53,7 @@ public class PaymentController {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
 //    })
     public String paymentHystrixTimeOut() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(3);
         integer.incrementAndGet();
         log.info("请求第{}次", integer.get());
         return Thread.currentThread().getName() + "timeout";
