@@ -49,9 +49,9 @@ public class PaymentController {
      * @throws InterruptedException
      */
     @GetMapping("/hystrix/timeout")
-    @HystrixCommand(fallbackMethod = "paymentHystrixOk",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
-    })
+//    @HystrixCommand(fallbackMethod = "paymentHystrixOk",commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+//    })
     public String paymentHystrixTimeOut() throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
         integer.incrementAndGet();
