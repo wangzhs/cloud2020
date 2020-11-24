@@ -16,10 +16,11 @@ eureka:
     # false表示自己就是注册中心，我的职责就是维护服务实列，并不需要检索服务
     fetch-registry: false
     service-url:
-      #单机     defaultZone:  http://${eureka.instance.hostname}:${server.port}/eureka/
+      #单机
+      defaultZone:  http://${eureka.instance.hostname}:${server.port}/eureka/
       #多机部署  http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka 多个服务地址用,分割
       #设置与Eureka Service交互的地址 查询和注册微服务都需要该地址
-      defaultZone: http://eureka7002.com:7002/eureka
+#      defaultZone: http://eureka7002.com:7002/eureka
   server:
     enable-self-preservation: false
     # 心跳监控时间 单位毫秒
