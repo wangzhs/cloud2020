@@ -1,6 +1,13 @@
 # cloud2020
 尚硅谷2020SpringCloud的教程学习记录
 
+* 注册中心
+* 服务调用
+    * 负载均衡
+* 熔断器
+* 服务网关
+* 服务配置文件
+
 ## 服务列表
 |服务ID|服务名称|端口号|服务解释|关联服务|
 |:---:|:---:|:---:|:---:|:---:|
@@ -17,6 +24,8 @@
 |11|cloud-consumer-hystrix-dashboard9001|9001|hystrix图形界面监控||
 |12|cloud-consumer-openfeign-hystrix-order80|80|客户端添加熔断措施|2，13|
 |13|cloud-provider-hystrix-payment8001|8001|服务端添加熔断措施|2，12|
+|14|cloud-gateway9527|9527|服务网关|2|
+|15|cloud-config-center3344|3344|服务配置中心|2|
 
 
 ## 学习技术的架包和软件版本选择
