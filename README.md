@@ -14,6 +14,9 @@
 |8|cloud-consumerconsul-order80|80|Consul注册中心，客户端消费|9|
 |9|cloud-provider-consul-payment8006|8006|Zookeeper注册中心，服务端|9|
 |10|cloud-consumer-openfeign-order80|80|Eureka注册中心，客户端 ，提供openfeign注解式调用|2，3，4，5|
+|11|cloud-consumer-hystrix-dashboard9001|9001|hystrix图形界面监控||
+|12|cloud-consumer-openfeign-hystrix-order80|80|客户端添加熔断措施|2，13|
+|13|cloud-provider-hystrix-payment8001|8001|服务端添加熔断措施|2，12|
 
 
 ## 学习技术的架包和软件版本选择
@@ -86,6 +89,15 @@ ribbon 是从eureka注册中心服务器端上获取服务注册中心，缓存�
 * 熔断：在快照时间窗口以内必须满足，请求次数达到阈值并且达到一定错误率触发熔断
 
 
+## gateway
+
+### 特性
+* 动态路由(Route)
+* 断言（Predicate）
+* 过滤器(filter)
+
+
+正向代理隐藏客户端，反向代理隐藏服务端
 
 # 问题
 1. 为什么ribbon的rule不能跟springboot启动类放在同一个目录下
@@ -95,3 +107,4 @@ ribbon 是从eureka注册中心服务器端上获取服务注册中心，缓存�
 5. 客户端配置了openfeign超时时间，调用还是报错
 6. Hystrix的限流
 7. 布隆过滤器
+8. webFlux
