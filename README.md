@@ -93,3 +93,5 @@ ribbon 是从eureka注册中心服务器端上获取服务注册中心，缓存�
 3. openfeign注解的实现
 4. Hystrix的熔断降级 怎么区分是异常还是超时
 5. 客户端配置了openfeign超时时间，调用还是报错
+6. Hystrix的限流
+7. 布隆过滤器
