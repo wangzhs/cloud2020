@@ -13,6 +13,7 @@ spring:
           uri: lb://cloud-provider-hystrix-payment
           predicates:
             - Path=/payment/**
+            - After=2020-11-25T14:33:34.987+08:00[Asia/Shanghai]
       discovery:
         locator:
           enabled: true
