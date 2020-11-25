@@ -1,16 +1,21 @@
 server:
   port: 9527
 
-#spring:
-#  application:
-#    name: cloud-gateway
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: payment_route1
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: payment_route1
 #          uri: http://localhost:8001
-#          predicates:
-#            - Path=/payment/**
+#          lb:// 表示基于服务注册中心负载均衡
+          uri: lb://cloud-provider-hystrix-payment
+          predicates:
+            - Path=/payment/**
+      discovery:
+        locator:
+          enabled: true
 
 eureka:
   instance:
