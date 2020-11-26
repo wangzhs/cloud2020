@@ -1,10 +1,9 @@
 server:
-  port: 3355
-
+  port: 3366
 
 spring:
   application:
-    name: cloud-config-server-center
+    name: cloud-config-server-client
   cloud:
     # config 客户端配置
     config:

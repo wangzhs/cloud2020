@@ -9,17 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-config-center3344</artifactId>
+    <artifactId>cloud-config-client3366</artifactId>
+
     <dependencies>
-        <!--消息总线集成bus和mq-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
-        <!--配置文件服务-->
+        <!--服务端配置-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <!--web-->
         <dependency>
@@ -56,5 +56,4 @@
             <artifactId>cloud-api-commons</artifactId>
         </dependency>
     </dependencies>
-
 </project>

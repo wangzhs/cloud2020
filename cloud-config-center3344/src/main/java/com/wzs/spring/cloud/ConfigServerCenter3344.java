@@ -9,7 +9,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  * @since 25/11/2020
  */
 @SpringBootApplication
-@EnableConfigServer
+@EnableConfigServer /*刷新需要 curl -XPOST "http://config-3344.com:3344/actuator/bus-refresh"*/
 public class ConfigServerCenter3344 {
 
     public static void main(String[] args) {

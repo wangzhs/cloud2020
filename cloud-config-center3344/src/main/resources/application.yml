@@ -17,8 +17,21 @@ spring:
             - test2
       # 分支
       label: main
+  # rabbitmq配置
+  rabbitmq:
+    host: txdev
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
+
+# rabbitmq相关配置，暴露bus监控断端点,刷新配置端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
