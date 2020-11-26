@@ -1,15 +1,15 @@
 # cloud2020
 尚硅谷2020SpringCloud的教程学习记录
 
-* 注册中心
-* 服务调用
+* 注册中心 Eureka,zookeeper,consul
+* 服务调用 ribbon,openfeign
     * 负载均衡
-* 熔断器
-* 服务网关
-* 服务配置文件
-* 消息总线
-* 消息驱动
-* 链路监控
+* 熔断器   hystrix
+* 服务网关  gateway
+* 服务配置文件    config
+* 消息总线  bus
+* 消息驱动  
+* 链路监控  zipkin
 
 ## 服务列表
 |服务ID|服务名称|端口号|服务解释|关联服务|
@@ -58,11 +58,12 @@
 
 
 ## Eureka、Zookeeper、Consul区别
-|组件名|语言|CAP|服务健康检********查|对外暴露接口|是否集成spring cloud|
+|组件名|语言|CAP|服务健康检查|对外暴露接口|是否集成spring cloud|
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |Eureka|Java|AP|可配置支持|HTTP|是|
 |Consul|go|CP|支持|HTTP/DNS|是|
 |Zookeeper|Java|CP|支持|客户端|是|
+|Nacos|Java|CP/AP|支持|客户端|是|
 
 ### CAP简介
 * C:Consistency（强一致性）
