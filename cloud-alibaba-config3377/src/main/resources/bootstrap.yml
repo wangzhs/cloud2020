@@ -8,14 +8,15 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 127.0.0.1:8848
+#         集群nginx代理转发  集群部署启动一定不要加 -m参数
+        server-addr: 127.0.0.1:1111
         # dataId 前缀
         prefix: application
         # dataId 后缀
         fileExtension: yml
-        namespace: 8b8a8885-69e1-4c5d-9863-2a6c3d104c5a
+#        namespace: 8b8a8885-69e1-4c5d-9863-2a6c3d104c5a
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 127.0.0.1:1111
 
   profiles:
     active: test
