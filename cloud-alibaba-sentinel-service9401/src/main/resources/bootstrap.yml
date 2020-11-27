@@ -1,0 +1,24 @@
+server:
+  port: 9401
+
+spring:
+  application:
+    name: cloud-alibaba-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        # 集群部署，nginx转发
+        #        server-addr: 127.0.0.1:1111
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        port: 8719
+        # sentinel
+        # 原本是8080端口。本机nginx代理有问题。改成8888
+        dashboard: localhost:8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
